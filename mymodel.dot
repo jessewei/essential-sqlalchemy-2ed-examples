@@ -1,0 +1,18 @@
+ graph {
+    graph [rankdir=LR];
+    node [label="\N",
+        shape=plaintext
+    ];
+    edge [color=gray50,
+        minlen=2,
+        style=dashed
+    ];
+
+"line_items" [label=<<FONT FACE="Helvetica"><TABLE BORDER="0" CELLBORDER="1" CELLPADDING="4" CELLSPACING="0"><TR><TD><B><FONT POINT-SIZE="16">line_items</FONT></B></TD></TR><TR><TD ALIGN="LEFT"><u><FONT>line_items_id</FONT></u><FONT> [INTEGER]</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT>order_id</FONT><FONT> [INTEGER]</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT>cookie_id</FONT><FONT> [INTEGER]</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT>quantity</FONT><FONT> [INTEGER]</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT>extended_cost</FONT><FONT> [NUMERIC(12, 2)]</FONT></TD></TR></TABLE></FONT>>];
+"users" [label=<<FONT FACE="Helvetica"><TABLE BORDER="0" CELLBORDER="1" CELLPADDING="4" CELLSPACING="0"><TR><TD><B><FONT POINT-SIZE="16">users</FONT></B></TD></TR><TR><TD ALIGN="LEFT"><u><FONT>user_id</FONT></u><FONT> [INTEGER]</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT>username</FONT><FONT> [VARCHAR(15)]</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT>email_address</FONT><FONT> [VARCHAR(255)]</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT>phone</FONT><FONT> [VARCHAR(20)]</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT>password</FONT><FONT> [VARCHAR(25)]</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT>created_on</FONT><FONT> [DATETIME]</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT>updated_on</FONT><FONT> [DATETIME]</FONT></TD></TR></TABLE></FONT>>];
+"cookies" [label=<<FONT FACE="Helvetica"><TABLE BORDER="0" CELLBORDER="1" CELLPADDING="4" CELLSPACING="0"><TR><TD><B><FONT POINT-SIZE="16">cookies</FONT></B></TD></TR><TR><TD ALIGN="LEFT"><u><FONT>cookie_id</FONT></u><FONT> [INTEGER]</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT>cookie_name</FONT><FONT> [VARCHAR(50)]</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT>cookie_recipe_url</FONT><FONT> [VARCHAR(255)]</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT>cookie_sku</FONT><FONT> [VARCHAR(55)]</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT>quantity</FONT><FONT> [INTEGER]</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT>unit_cost</FONT><FONT> [NUMERIC(12, 2)]</FONT></TD></TR></TABLE></FONT>>];
+"orders" [label=<<FONT FACE="Helvetica"><TABLE BORDER="0" CELLBORDER="1" CELLPADDING="4" CELLSPACING="0"><TR><TD><B><FONT POINT-SIZE="16">orders</FONT></B></TD></TR><TR><TD ALIGN="LEFT"><FONT>order_id</FONT><FONT> [INTEGER]</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT>user_id</FONT><FONT> [INTEGER]</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT>shipped</FONT><FONT> [BOOLEAN]</FONT></TD></TR></TABLE></FONT>>];
+"cookies" -- "line_items" [taillabel=<<FONT>0..N</FONT>>,headlabel=<<FONT>{0,1}</FONT>>];
+"orders" -- "line_items" [taillabel=<<FONT>0..N</FONT>>,headlabel=<<FONT>{0,1}</FONT>>];
+"users" -- "orders" [taillabel=<<FONT>0..N</FONT>>,headlabel=<<FONT>{0,1}</FONT>>];
+}
